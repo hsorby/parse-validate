@@ -63,7 +63,7 @@ bool htmlContentIssue(libcellml::LoggerPtr logger)
 
 int main(int argc, char *argv[])
 {
-    auto p = libcellml::Parser::create();
+    auto p = libcellml::Parser::create(true);
     auto v = libcellml::Validator::create();
 
     std::vector<std::string> args;
@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
         std::ifstream ifs(args.at(0));
         std::string content( (std::istreambuf_iterator<char>(ifs) ),
                                (std::istreambuf_iterator<char>()    ) );
-        auto m = p->parse1XModel(content, true);
+        auto m = p->parseModel(content);
         if (acceptableIssues(p)) {
             return_code = 2;
             v->validateModel(m);
