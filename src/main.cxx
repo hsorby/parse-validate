@@ -63,7 +63,7 @@ bool htmlContentIssue(libcellml::LoggerPtr logger)
 
 int main(int argc, char *argv[])
 {
-    auto p = libcellml::Parser::create(true);
+    auto p = libcellml::Parser::create(false);
     auto v = libcellml::Validator::create();
 
     std::vector<std::string> args;
